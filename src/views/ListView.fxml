@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="881.0" style="-fx-background-color: #ECECEC;" stylesheets="@material-fx-v0_3.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.ListViewController">
+   <children>
+      <ScrollPane layoutX="20.0" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="526.0" prefViewportHeight="722.0" prefViewportWidth="778.0" prefWidth="767.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <BorderPane depthTest="DISABLE">
+               <padding>
+                  <Insets bottom="20.0" left="100.0" right="20.0" top="20.0" />
+               </padding>
+               <center>
+                  <VBox fx:id="itensBox" spacing="20.0" />
+               </center>
+            </BorderPane>
+         </content>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </ScrollPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="cardPane" prefHeight="400.0" prefWidth="600.0" styleClass="card" stylesheets="@material-fx-v0_3.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.InfoViewController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="648.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <ImageView id="photoView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../img/usericon.png" />
+               </image>
+               <BorderPane.margin>
+                  <Insets right="10.0" />
+               </BorderPane.margin>
+            </ImageView>
+         </left>
+         <right>
+            <BorderPane prefHeight="260.0" prefWidth="361.0" BorderPane.alignment="CENTER">
+               <center>
+                  <GridPane fx:id="gridPane" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label id="cellLabel" fx:id="cellphoneLabel" text="(77) 9999-9999" GridPane.columnIndex="1" />
+                        <Label styleClass="control-label" text="Celular" GridPane.columnIndex="3" />
+                        <ImageView pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../img/phone_icon.png" />
+                           </image>
+                        </ImageView>
+                        <Label id="cityLabel" fx:id="cityLabel" styleClass="labeç" text="Vitória da Conquista" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label id="postalLabel" fx:id="postalLabel" text="45.028-190" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label id="birthdayLabel" fx:id="birthdayLabel" text="24 de Junho de 1994" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label styleClass="control-label" text="Telefone" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label styleClass="control-label" text="Cidade" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label styleClass="control-label" text="Rua" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label styleClass="control-label" text="Código Postal" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Label styleClass="control-label" text="Aniversário" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                        <ImageView GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../img/phone_icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../img/location_icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../img/place_icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../img/mail_icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../img/cake_icon.png" />
+                           </image>
+                        </ImageView>
+                        <Label id="phoneLabel" fx:id="phoneLabel" text="(77) 3424-9999" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="streetLabel" text="Rua Cláudia Botelho. 777" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="54.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="184.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="33.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </center>
+               <top>
+                  <GridPane fx:id="titleBox">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="206.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="145.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox fx:id="buttonBox" alignment="CENTER_RIGHT" focusTraversable="true" layoutX="95.0" prefHeight="43.0" prefWidth="96.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS">
+                           <children>
+                              <Button fx:id="editButton" mnemonicParsing="false" onMouseClicked="#editClick" styleClass="card-button">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@../img/edit_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="removeButton" mnemonicParsing="false" styleClass="card-button">
+                                 <graphic>
+                                    <ImageView>
+                                       <image>
+                                          <Image url="@../img/delete_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </HBox>
+                        <Label id="nameLabel" fx:id="nameLabel" prefHeight="36.0" prefWidth="237.0" text="Yan Kaic A. Silva" wrapText="true">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </top>
+            </BorderPane>
+         </right>
+      </BorderPane>
+      <Button fx:id="saveButton" mnemonicParsing="false" onMouseClicked="#saveClick" styleClass="card-button">
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@../img/save_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="cancelButton" mnemonicParsing="false" onMouseClicked="#cancelClick" styleClass="card-button">
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@../img/cancel_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
