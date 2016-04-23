@@ -7,6 +7,7 @@ package views;
 
 import entity.Person;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -79,6 +80,11 @@ public class InfoViewController implements Initializable {
     createFields();
     loadLabels();
   }
+  
+  public void show(Person person){
+    this.person = person;
+    loadLabels();
+  }
 
   private void createFields() {
     phoneField = new TextField();
@@ -136,10 +142,10 @@ public class InfoViewController implements Initializable {
     person.setName(nameField.getText());
     person.setPhone(phoneField.getText());
     person.setCellphone(cellphoneField.getText());
-    person.setBirthday(birthdayField.getText());
+//    person.setBirthday(birthdayField.getText());
     person.setCity(cityField.getText());
     person.setStreet(streetField.getText());
-    person.setPostal(postalField.getText());
+    person.setPostal(Integer.parseInt(postalField.getText()));
   }
 
   private void addFields() {
@@ -168,8 +174,8 @@ public class InfoViewController implements Initializable {
     phoneField.setText(person.getPhone());
     cityField.setText(person.getCity());
     streetField.setText(person.getStreet());
-    postalField.setText(person.getPostal());
-    birthdayField.setText(person.getBirthday());
+    postalField.setText(person.getPostal()+"");
+    birthdayField.setText(person.getBirthday().format(DateTimeFormatter.ISO_DATE));
   }
 
   private void loadLabels() {
@@ -178,8 +184,8 @@ public class InfoViewController implements Initializable {
     phoneLabel.setText(person.getPhone());
     cityLabel.setText(person.getCity());
     streetLabel.setText(person.getStreet());
-    postalLabel.setText(person.getPostal());
-    birthdayLabel.setText(person.getBirthday());
+    postalLabel.setText(person.getPostal()+"");
+    birthdayLabel.setText(person.getBirthday().format(DateTimeFormatter.ISO_DATE));
   }
 
   private void visibilityLabels(boolean b) {

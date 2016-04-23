@@ -5,9 +5,15 @@
  */
 package views;
 
+import entity.Person;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.binding.Bindings;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -16,12 +22,31 @@ import javafx.fxml.Initializable;
  */
 public class MenuViewController implements Initializable {
 
-  /**
-   * Initializes the controller class.
-   */
+  @FXML
+  private TableView<Person> personTable;
+  @FXML
+  private TableColumn<Person, String> leftColumn;
+  @FXML
+  private TableColumn<Person, String> rightColumn;
+  private ListViewController parent;
+
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }  
-  
+    leftColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+    rightColumn.setCellValueFactory(cellData -> cellData.getValue().getCellphoneProperty());
+
+  }
+
+  void setData(ObservableList<Person> personList) {
+    personTable.setItems(personList);
+    personTable.setPrefHeight(personList.size() * (personTable.getFixedCellSize()+2) + 65);
+    
+    personTable.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> parent.setSelected(newValue));
+  }
+
+  public void setParent(ListViewController parent) {
+    this.parent = parent;
+  }
+
 }
