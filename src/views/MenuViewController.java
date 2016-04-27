@@ -8,6 +8,8 @@ package views;
 import entity.Person;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -34,19 +36,24 @@ public class MenuViewController implements Initializable {
   public void initialize(URL url, ResourceBundle rb) {
     leftColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
     rightColumn.setCellValueFactory(cellData -> cellData.getValue().getCellphoneProperty());
-
   }
 
   void setData(ObservableList<Person> personList) {
     personTable.setItems(personList);
-    personTable.setPrefHeight(personList.size() * (personTable.getFixedCellSize()+2) + 65);
-    
-    personTable.getSelectionModel().selectedItemProperty().addListener(
-            (observable, oldValue, newValue) -> parent.setSelected(newValue));
+
+    personTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+      parent.setSelected(newValue);
+      personTable.getSelectionModel().clearSelection();
+    });
   }
 
   public void setParent(ListViewController parent) {
     this.parent = parent;
+  }
+
+  void resize() {
+    ObservableList<Person> personList = personTable.getItems();
+    personTable.setPrefHeight(personList.size() * (personTable.getFixedCellSize() + 2) + 65);
   }
 
 }

@@ -99,7 +99,7 @@ public class InfoViewController implements Initializable {
   }
 
   @FXML
-  public void editClick(MouseEvent event) {
+  public void editClick() {
     buttonMode2();
 
     visibilityLabels(false);

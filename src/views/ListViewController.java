@@ -8,6 +8,7 @@ package views;
 import entity.Person;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,6 +37,9 @@ public class ListViewController implements Initializable {
   private MenuViewController tableBController;
   private AnchorPane infoView;
   private InfoViewController infoController;
+  private ObservableList<Person> listA;
+  private ObservableList<Person> listB;
+  private AnchorPane tableB;
 
   @Override
   public void initialize(URL url, ResourceBundle rb) {
@@ -52,9 +56,13 @@ public class ListViewController implements Initializable {
       infoController = loader.getController();
 
       loader = new FXMLLoader(getClass().getResource("/views/MenuView.fxml"));
-      AnchorPane tableB = (AnchorPane) loader.load();
+      tableB = (AnchorPane) loader.load();
       itensBox.getChildren().add(tableB);
       tableBController = loader.getController();
+      tableBController.setParent(this);
+
+      infoView.setVisible(false);
+      tableB.setVisible(false);
 
     }
     catch (IOException ex) {
@@ -64,32 +72,70 @@ public class ListViewController implements Initializable {
 
   public void setData(ObservableList<Person> personList) {
     this.personList = personList;
-    tableAController.setData(personList);
+    listA = FXCollections.observableArrayList();
+    listB = FXCollections.observableArrayList();
+    for (Person person : personList) {
+      listA.add(person);
+    }
+    tableAController.setData(listA);
+    tableBController.setData(listB);
+    tableAController.resize();
   }
 
   public void setSelected(Person selectedPerson) {
     if (selectedPerson == null) {
+      infoView.setVisible(false);
+      tableB.setVisible(false);
+      while (!listB.isEmpty()) {
+        listA.add(listB.remove(0));
+      }
       return;
     }
-    infoController.show(selectedPerson);
-
-    ObservableList<Person> listA = FXCollections.observableArrayList();
-    ObservableList<Person> listB = FXCollections.observableArrayList();
-    boolean toA = true;
-    for (Person person : personList) {
-      if (person == selectedPerson) {
-        toA = false;
-        continue;
-      }
-      if (toA) {
-        listA.add(person);
-      }
-      else {
-        listB.add(person);
+    if (listA.contains(selectedPerson)) {
+      while (listA.get(listA.size() - 1) != selectedPerson) {
+        listB.add(listA.remove(listA.size() - 1));
       }
     }
-    tableAController.setData(listA);
-    tableBController.setData(listB);
+    else {
+      while (listB.get(0) != selectedPerson) {
+        listA.add(listB.remove(0));
+      }
+    }
+    infoController.show(selectedPerson);
+    tableAController.resize();
+    tableBController.resize();
+    infoView.setVisible(true);
+    tableB.setVisible(true);
+
+  }
+  
+  public void removePerson(Person person){
+      if(listA.contains(person)){
+          listA.remove(person);
+      }
+      else if(listB.contains(person)){
+          listB.remove(person);
+      }
+      infoView.setVisible(false);
+  }
+  
+  public void updatePerson(Person person){
+      if(!listA.contains(person)){
+          listA.add(person);
+      }
+  }
+
+  @FXML
+  public void outClick() {
+    setSelected(null);
+  }
+  
+  @FXML
+  public void addClick(){
+      Person person = new Person();
+      infoView.setVisible(true);
+      infoController.show(person);
+      infoController.editClick();
   }
 
 }
